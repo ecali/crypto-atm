@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apikey: 'AIzaSyDS3BozkohsukfWPhgfl02oOQdrYf1Whu0'
+  apikey: 'test .gitignore'
 };
 
 /*
