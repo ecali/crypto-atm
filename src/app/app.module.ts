@@ -8,6 +8,8 @@ import { MapComponent } from './components/map/map.component';
 import { VenuesComponent } from './components/venues/venues.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { SharedModule } from './shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MaterialModule } from './material/material.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

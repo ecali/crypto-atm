@@ -1,0 +1,12 @@
+<mat-card class="card">
+    <div class="flex">
+    <img *ngIf="image" [src]="image" [alt]="title">
+    <mat-icon *ngIf="icon">{{icon}}</mat-icon>
+        <div class="details">
+            <div class="top-details">
+                <h4 class="subheading-1">{{title}}</h4>
+            </div>
+            <span>{{subtitle | titlecase}}</span>
+        </div>
+    </div>
+</mat-card>

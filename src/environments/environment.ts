@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apikey: 'test .gitignore'
+  apikey: 'AIzaSyCB3T0CbJzy0IvkFcJ4PAVB61xbX2uZuQI',
+  rapidApiKey: '61f22fac3emshbb0c230eb2179fep11e60ejsnc62889e4aa95'
 };
 
 /*
