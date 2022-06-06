@@ -38,7 +38,7 @@ export class VenuesService {
 
   getReverseGeocoding(){
     this.remote.getReverseGeocoding().subscribe(res => {
-      console.log(res);
+      // console.log(res);
     })
   }
 

@@ -26,7 +26,6 @@ export class VenuesComponent implements OnInit {
     this.venuesService.getVenues().subscribe(atms => {
       this.atms = atms;
       this.pagedAtms = this.atms.slice(0, this.pageSize);
-      this.setMapMarkerList();
       this.length = this.atms.length;
     })
   }
@@ -38,7 +37,6 @@ export class VenuesComponent implements OnInit {
       endIndex = this.length;
     }
     this.pagedAtms = this.atms.slice(startIndex, endIndex);
-    this.setMapMarkerList();
   }
 
   setMapMarkerList() {
@@ -49,10 +47,13 @@ export class VenuesComponent implements OnInit {
         icon: this.venuesService.getMarkerIcon()
       })
     })
-    this.venuesService.setMapMarkerList(this.selectedMarkerList);
   }
 
   getIcon(category: string): string {
     return this.venuesService.retriveIconFromCategory(category);
+  }
+
+  loadOnMap(){
+    this.venuesService.setMapMarkerList(this.selectedMarkerList);
   }
 }

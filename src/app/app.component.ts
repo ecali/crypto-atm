@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UtilsMapService } from './services/utils-map.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor() { }
+  constructor(public utilsMapService: UtilsMapService) { }
 
 }

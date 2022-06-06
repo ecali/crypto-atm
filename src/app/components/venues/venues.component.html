@@ -1,13 +1,15 @@
 <mat-card class="m-1r" [ngClass]="pagedAtms.length !== pageSize ? 'card-in-loading' : ''">
     <ng-container *ngIf="pagedAtms.length === pageSize">
         <h2 class="mat-title">Crypto Atm List</h2>
+        <button mat-raised-button color="primary" (click)="loadOnMap()">VIEW ON MAP</button>
         <mat-list role="list">
             <ng-container *ngFor="let item of pagedAtms">
-                <app-card-list [title]="item.name" [subtitle]="item.category" [icon]="getIcon(item.category)" ></app-card-list>
+                <app-card-list [title]="item.name" [subtitle]="item.category" [icon]="getIcon(item.category)">
+                </app-card-list>
             </ng-container>
             <!-- <mat-list-item *ngFor="let item of pagedAtms">{{item.id}} ) {{item.name}} <span *ngIf="item.category !== 'default'"> - {{item.category}}</span></mat-list-item> -->
         </mat-list>
-        
+
         <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
             (page)="OnPageChange($event)">
         </mat-paginator>
@@ -15,5 +17,5 @@
     <ng-container *ngIf="pagedAtms.length !== pageSize">
         <mat-spinner></mat-spinner>
     </ng-container>
-   
+
 </mat-card>

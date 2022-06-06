@@ -1,7 +1,9 @@
-<div class="container">
+<div >
   <div class="row">
     <div class="col-8">
-      <!-- <app-map></app-map> -->
+      <ng-container *ngIf="utilsMapService.mapMarkerList">
+        <app-map [markers]="utilsMapService.mapMarkerList"></app-map>
+      </ng-container>
     </div>
     <div class="col-4">
       <app-venues></app-venues>

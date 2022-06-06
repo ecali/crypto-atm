@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { Observable, of } from 'rxjs';
+import { MapMarker } from 'src/app/model/map';
 import { UtilsMapService } from 'src/app/services/utils-map.service';
 import { environment } from 'src/environments/environment';
 
@@ -11,11 +12,15 @@ import { environment } from 'src/environments/environment';
 })
 export class MapComponent implements OnInit {
 
-  currentLocation = { lat: 40.730610, lng: -73.935242 }
+  currentLocation = { lat: 40.730610, lng: -73.935242 };
+  load = false;
+  @Input() markers: MapMarker[] = [];
 
-  constructor(private utilsMapService: UtilsMapService) { }
+  constructor() { }
 
   ngOnInit(): void {
+    if (this.markers.length > 0) {
+      this.load = true;
       this.setLocation().subscribe(_ => {
         let loader = new Loader({
           apiKey: environment.apikey,
@@ -29,19 +34,20 @@ export class MapComponent implements OnInit {
             position: this.currentLocation,
             map,
           });
-          if (this.utilsMapService.mapMarkerList.length > 0) {
-            this.utilsMapService.mapMarkerList.forEach(marker => {
-              new google.maps.Marker({
-                position: marker.position,
-                map,
-                label: marker.label,
-                icon: marker.icon
-              });
-            })
-          }
+          this.markers.forEach(marker => {
+            new google.maps.Marker({
+              position: marker.position,
+              map,
+              label: marker.label,
+              icon: marker.icon
+            });
+          })
         })
-
       })
+    } else {
+      this.load = false;
+    }
+
   }
 
   setLocation(): Observable<boolean> {
